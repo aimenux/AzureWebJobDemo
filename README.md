@@ -1,3 +1,5 @@
+[![.NET](https://github.com/aimenux/AzureWebJobDemo/actions/workflows/ci.yml/badge.svg)](https://github.com/aimenux/AzureWebJobDemo/actions/workflows/ci.yml)
+
 # AzureWebJobDemo
 ```
 Using azure web jobs
@@ -9,4 +11,4 @@ Using azure web jobs
 >
 > - `ConsumerWebJob` get message from an azure queue based on a `queue trigger`
 
-**`Tools`** : vs22, net 6, application-insights
+**`Tools`** : vs22, net 6, azure storage queue, serilog, application-insights
