@@ -5,6 +5,6 @@ namespace ConsumerWebJob.Helpers
 {
     public interface IFakeRepository
     {
-        Task SaveAsync(string message, CancellationToken cancellationToken = default);
+        Task SaveAsync(string message, long retry, CancellationToken cancellationToken = default);
     }
 }

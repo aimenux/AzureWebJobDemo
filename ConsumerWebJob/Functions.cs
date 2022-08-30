@@ -27,8 +27,7 @@ namespace ConsumerWebJob
             ILogger logger,
             CancellationToken cancellationToken)
         {
-            logger.LogInformation("Processing message {text} (retry = {retry})", message.MessageText, message.DequeueCount);
-            await _repository.SaveAsync(message.MessageText, cancellationToken);
+            await _repository.SaveAsync(message.MessageText, message.DequeueCount, cancellationToken);
         }
     }
 }

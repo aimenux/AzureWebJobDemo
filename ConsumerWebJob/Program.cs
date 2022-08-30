@@ -30,7 +30,7 @@ namespace ConsumerWebJob
                         options.MaxDequeueCount = 3;
                     });
                 })
-                .ConfigureAppConfiguration((hostingContext, config) =>
+                .ConfigureAppConfiguration((_, config) =>
                 {
                     config.AddJsonFile();
                     config.AddUserSecrets();
@@ -38,11 +38,12 @@ namespace ConsumerWebJob
                     config.AddCommandLine(args);
                     config.AddAzureWebJobsStorage();
                 })
-                .ConfigureLogging((_, loggingBuilder) =>
+                .ConfigureLogging((hostingContext, loggingBuilder) =>
                 {
                     loggingBuilder.ClearProviders();
-                    loggingBuilder.AddNonGenericLogger();
                     loggingBuilder.AddSerilog();
+                    loggingBuilder.AddNonGenericLogger();
+                    loggingBuilder.AddApplicationInsights(hostingContext.Configuration);
                 })
                 .UseSerilog((hostingContext, loggerConfiguration) =>
                 {

@@ -32,7 +32,7 @@ namespace ProducerWebJob
                     builder.AddTimers();
                     builder.UseHostId();
                 })
-                .ConfigureAppConfiguration((hostingContext, config) =>
+                .ConfigureAppConfiguration((_, config) =>
                 {
                     config.AddJsonFile();
                     config.AddUserSecrets();
@@ -40,11 +40,12 @@ namespace ProducerWebJob
                     config.AddCommandLine(args);
                     config.AddAzureWebJobsStorage();
                 })
-                .ConfigureLogging((_, loggingBuilder) =>
+                .ConfigureLogging((hostingContext, loggingBuilder) =>
                 {
                     loggingBuilder.ClearProviders();
-                    loggingBuilder.AddNonGenericLogger();
                     loggingBuilder.AddSerilog();
+                    loggingBuilder.AddNonGenericLogger();
+                    loggingBuilder.AddApplicationInsights(hostingContext.Configuration);
                 })
                 .UseSerilog((hostingContext, loggerConfiguration) =>
                 {
