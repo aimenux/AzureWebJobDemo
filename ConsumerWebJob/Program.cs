@@ -52,7 +52,7 @@ namespace ConsumerWebJob
                     loggerConfiguration
                         .ReadFrom.Configuration(hostingContext.Configuration);
                 })
-                .ConfigureServices((hostingContext, services) =>
+                .ConfigureServices((_, services) =>
                 {
                     services.AddSingleton<IFakeRepository, FakeRepository>();
                 });

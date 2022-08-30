@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Azure.Storage.Queues;
-using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
